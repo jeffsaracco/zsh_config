@@ -1,7 +1,8 @@
-# Path to your oh-my-zsh installation.
-export ZSH=/Users/jeffsaracco/.oh-my-zsh
+export DEFAULT_USER=`whoami`
 
-export DEFAULT_USER="jeffsaracco"
+# Path to your oh-my-zsh installation.
+export ZSH=/Users/$DEFAULT_USER/.oh-my-zsh
+
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
@@ -93,7 +94,7 @@ alias tat='tmux new-session -As "$(basename "$PWD" | tr . -)"'
 
 export PGHOST=localhost
 
-export NVM_DIR="/Users/jeffsaracco/.nvm"
+export NVM_DIR="/Users/$DEFAULT_USER/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
 
 export PATH=$PATH:/Applications/Postgres.app/Contents/Versions/9.4/bin
