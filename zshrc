@@ -29,7 +29,7 @@ ZSH_THEME="agnoster"
 # DISABLE_AUTO_TITLE="true"
 
 # Uncomment the following line to enable command auto-correction.
-ENABLE_CORRECTION="true"
+# ENABLE_CORRECTION="true"
 
 # Uncomment the following line to display red dots whilst waiting for completion.
 COMPLETION_WAITING_DOTS="true"
@@ -51,12 +51,11 @@ COMPLETION_WAITING_DOTS="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git bundler osx rake ruby brew capistrano common-aliases encode64 npm rvm tmux)
+plugins=(git bundler osx rake ruby brew capistrano common-aliases encode64 npm tmux)
 
 # User configuration
 
 export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin"
-# export MANPATH="/usr/local/man:$MANPATH"
 
 source $ZSH/oh-my-zsh.sh
 
@@ -76,6 +75,13 @@ export EDITOR='vim'
 # ssh
 # export SSH_KEY_PATH="~/.ssh/dsa_id"
 
+# --files: List files that would be searched but do not search
+# --no-ignore: Do not respect .gitignore, etc...
+# --hidden: Search hidden files and folders
+# --follow: Follow symlinks
+# --glob: Additional conditions for search (in this case ignore everything in the .git/ folder)
+export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.git/*"'
+
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
@@ -88,14 +94,24 @@ alias myip='ifconfig | grep inet  | grep -v 127.0.0.1 | cut -d\   -f2'
 alias rakeandbake='clear && rake'
 alias rebasemaster='git fetch && git rebase origin/master || sadface'
 alias sadface='(echo; echo "/-------\\"; echo "| *   * |"; echo "|  ___ ,|";  echo "| /   \\ |";  echo "\\-------/"; echo; false)'
-alias shutupvim='rm /var/tmp/*.sw*'
+alias shutupvim='rm -rf /var/tmp/*.sw*'
 alias speedtest='wget --delete-after http://cachefly.cachefly.net/10mb.test'
-alias tat='tmux new-session -As "$(basename "$PWD" | tr . -)"'
+# alias tat='tmux new-session -As "$(basename "$PWD" | tr . -)"'
 
 export PGHOST=localhost
 
 export NVM_DIR="/Users/$DEFAULT_USER/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
 
-export PATH=$PATH:/Applications/Postgres.app/Contents/Versions/9.4/bin
-export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
+export PATH=$PATH:/Applications/Postgres.app/Contents/Versions/9.4/bin:
+export GPG_TTY=$(tty)
+eval "$(nodenv init -)"
+eval "$(rbenv init -)"
+
+export GOPATH=$HOME/go
+export PATH=$PATH:$GOPATH/bin
+
+export PATH=$PATH:$PWD/bin
+
+source ~/.bin/tmuxinator.zsh
+export DISABLE_AUTO_TITLE=true
