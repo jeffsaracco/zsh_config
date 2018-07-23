@@ -90,13 +90,23 @@ export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.g
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-alias myip='ifconfig | grep inet  | grep -v 127.0.0.1 | cut -d\   -f2'
-alias rakeandbake='clear && rake'
+alias myip="ifconfig en0|awk '/inet / { print $2 }'"
 alias rebasemaster='git fetch && git rebase origin/master || sadface'
-alias sadface='(echo; echo "/-------\\"; echo "| *   * |"; echo "|  ___ ,|";  echo "| /   \\ |";  echo "\\-------/"; echo; false)'
 alias shutupvim='rm -rf /var/tmp/*.sw*'
 alias speedtest='wget --delete-after http://cachefly.cachefly.net/10mb.test'
-# alias tat='tmux new-session -As "$(basename "$PWD" | tr . -)"'
+alias clr='clear'
+alias cls='clear'
+alias cmdstatistics='history | awk '\''{print $2}'\'' | awk '\''BEGIN{FS="|"}{print $1}'\'' | sort | uniq -c | sort -n | tail -n 20 | sort -nr'
+alias gitprune='git remote prune origin'
+alias gitspec='bundle exec rspec `echo $(git st | grep _spec.rb | grep -v deleted | cut -f 2 -d "#" | cut -f 2 -d ":" | uniq)`'
+alias gst='git status'
+alias gut='git'
+alias h='history | grep'
+alias less='less -R'
+alias ll='ls -l'
+alias rakeandbake='clear && rake'
+alias sadface='(echo; echo "/-------\\"; echo "| *   * |"; echo "|  ___ ,|";  echo "| /   \\ |";  echo "\\-------/"; echo; false)'
+alias work='cd ~/workspace'
 
 export PGHOST=localhost
 
@@ -104,6 +114,7 @@ export NVM_DIR="/Users/$DEFAULT_USER/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
 
 export PATH=$PATH:/Applications/Postgres.app/Contents/Versions/9.4/bin:
+export PATH=$PATH:~/zsh_config/bin:
 export GPG_TTY=$(tty)
 eval "$(nodenv init -)"
 eval "$(rbenv init -)"
