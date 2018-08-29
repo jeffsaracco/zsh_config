@@ -126,3 +126,5 @@ export PATH=$PATH:$PWD/bin
 
 source ~/.bin/tmuxinator.zsh
 export DISABLE_AUTO_TITLE=true
+
+/etc/motd.sh
