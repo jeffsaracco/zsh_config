@@ -16,6 +16,7 @@ brew "coreutils"
 brew "cowsay"
 brew "go"
 brew "dep"
+brew "diff-so-fancy"
 brew "docker", link: false
 brew "docker-machine", link: false
 brew "libyaml"
@@ -30,9 +31,9 @@ brew "glide"
 brew "gnupg"
 brew "go@1.9", link: true
 brew "hadoop"
+brew "htop"
 brew "hub"
 brew "hyperscan"
-brew "htop"
 brew "icu4c"
 brew "libtool"
 brew "imagemagick"
