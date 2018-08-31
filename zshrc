@@ -112,6 +112,7 @@ alias ll='ls -lagmh --all --git'
 alias cat='bat'
 alias ping='prettyping --nolegend'
 alias preview="fzf --preview 'bat --color \"always\" {}'"
+alias top="sudo htop" # alias top and fix high sierra bug
 
 export PGHOST=localhost
 

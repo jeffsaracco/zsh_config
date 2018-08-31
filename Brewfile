@@ -32,6 +32,7 @@ brew "go@1.9", link: true
 brew "hadoop"
 brew "hub"
 brew "hyperscan"
+brew "htop"
 brew "icu4c"
 brew "libtool"
 brew "imagemagick"
