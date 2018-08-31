@@ -103,11 +103,15 @@ alias gst='git status'
 alias gut='git'
 alias h='history | grep'
 alias less='less -R'
-alias ls='exa'
-alias ll='ls -lagmh --all --git'
 alias rakeandbake='clear && rake'
 alias sadface='(echo; echo "/-------\\"; echo "| *   * |"; echo "|  ___ ,|";  echo "| /   \\ |";  echo "\\-------/"; echo; false)'
 alias work='cd ~/workspace'
+
+alias ls='exa'
+alias ll='ls -lagmh --all --git'
+alias cat='bat'
+alias ping='prettyping --nolegend'
+alias preview="fzf --preview 'bat --color \"always\" {}'"
 
 export PGHOST=localhost
 
@@ -129,3 +133,5 @@ source ~/.bin/tmuxinator.zsh
 export DISABLE_AUTO_TITLE=true
 
 /etc/motd.sh
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
