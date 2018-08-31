@@ -50,6 +50,7 @@ brew "macvim"
 brew "md5sha1sum"
 brew "memcached", restart_service: true
 brew "mysql@5.7", restart_service: true
+brew "ncdu"
 brew "neovim"
 brew "nginx", restart_service: true
 brew "node"
