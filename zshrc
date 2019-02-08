@@ -80,7 +80,7 @@ export EDITOR='vim'
 # --hidden: Search hidden files and folders
 # --follow: Follow symlinks
 # --glob: Additional conditions for search (in this case ignore everything in the .git/ folder)
-export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.git/*"'
+export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --glob "!.git/*"'
 
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
@@ -96,7 +96,6 @@ alias shutupvim='rm -rf /var/tmp/*.sw*'
 alias speedtest='wget --delete-after http://cachefly.cachefly.net/10mb.test'
 alias clr='clear'
 alias cls='clear'
-alias cmdstatistics='history | awk '\''{print $2}'\'' | awk '\''BEGIN{FS="|"}{print $1}'\'' | sort | uniq -c | sort -n | tail -n 20 | sort -nr'
 alias gitprune='git remote prune origin'
 alias gitspec='bundle exec rspec `echo $(git st | grep _spec.rb | grep -v deleted | cut -f 2 -d "#" | cut -f 2 -d ":" | uniq)`'
 alias gst='git status'
@@ -116,6 +115,14 @@ alias top="sudo htop" # alias top and fix high sierra bug
 alias du="ncdu --color dark -rr -x --exclude .git --exclude node_modules"
 alias help='tldr'
 
+eval "$(hub alias -s)"
+
+fpath=(~/.zsh/completions $fpath) 
+autoload -U compinit && compinit
+
+fpath=(~/zsh_config/autoload $fpath)
+autoload -Uz kp
+
 export PGHOST=localhost
 
 export NVM_DIR="/Users/$DEFAULT_USER/.nvm"
@@ -123,6 +130,7 @@ export NVM_DIR="/Users/$DEFAULT_USER/.nvm"
 
 export PATH=$PATH:/Applications/Postgres.app/Contents/Versions/9.4/bin:
 export PATH=$PATH:~/zsh_config/bin:
+export PATH="$HOME/.cargo/bin:$PATH"
 export GPG_TTY=$(tty)
 eval "$(nodenv init -)"
 eval "$(rbenv init -)"
@@ -134,7 +142,5 @@ export PATH=$PATH:$PWD/bin
 
 source ~/.bin/tmuxinator.zsh
 export DISABLE_AUTO_TITLE=true
-
-/etc/motd.sh
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
