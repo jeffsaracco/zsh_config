@@ -92,6 +92,7 @@ export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --glob "!.git/*"'
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias myip="ifconfig en0|awk '/inet / { print $2 }'"
 alias rebasemaster='git fetch && git rebase origin/master || sadface'
+alias rebaseorigin='git fetch && git rebase origin/`echo $(git symbolic-ref --short -q HEAD)` || sadface'
 alias shutupvim='rm -rf /var/tmp/*.sw*'
 alias speedtest='wget --delete-after http://cachefly.cachefly.net/10mb.test'
 alias clr='clear'
