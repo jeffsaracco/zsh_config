@@ -80,7 +80,24 @@ export EDITOR='vim'
 # --hidden: Search hidden files and folders
 # --follow: Follow symlinks
 # --glob: Additional conditions for search (in this case ignore everything in the .git/ folder)
-export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --glob "!.git/*"'
+# export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --glob "!.git/*"'
+export FZF_DEFAULT_COMMAND='fd --type f --color=never'
+export FZF_CTRL_T_OPTS="--preview 'bat --color=always --line-range :500 {}'"
+
+fzf_git_log() {
+    local commits=$(
+      git ll --color=always "$@" |
+        fzf --ansi --no-sort --height 100% \
+            --preview "echo {} | grep -o '[a-f0-9]\{7\}' | head -1 |
+                       xargs -I@ sh -c 'git show --color=always @'"
+      )
+    if [[ -n $commits ]]; then
+        local hashes=$(printf "$commits" | cut -d' ' -f2 | tr '\n' ' ')
+        git show $hashes
+    fi
+}
+
+alias gll='fzf_git_log'
 
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
