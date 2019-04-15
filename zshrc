@@ -132,6 +132,7 @@ alias preview="fzf --preview 'bat --color \"always\" {}'"
 alias top="sudo htop" # alias top and fix high sierra bug
 alias du="ncdu --color dark -rr -x --exclude .git --exclude node_modules"
 alias help='tldr'
+unalias fd
 
 eval "$(hub alias -s)"
 
@@ -162,3 +163,4 @@ source ~/.bin/tmuxinator.zsh
 export DISABLE_AUTO_TITLE=true
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+export PATH="/usr/local/opt/mysql-client/bin:$PATH"
