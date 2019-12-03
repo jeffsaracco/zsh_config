@@ -123,6 +123,8 @@ alias less='less -R'
 alias rakeandbake='clear && rake'
 alias sadface='(echo; echo "/-------\\"; echo "| *   * |"; echo "|  ___ ,|";  echo "| /   \\ |";  echo "\\-------/"; echo; false)'
 alias work='cd ~/workspace'
+alias testchanges='bin/tt $(git status --porcelain | grep test/ | awk \{print\ \$2\})'
+alias gpr='hub pull-request -o'
 
 alias ls='exa'
 alias ll='ls -lagmh --all --git'
@@ -136,7 +138,7 @@ unalias fd
 
 eval "$(hub alias -s)"
 
-fpath=(~/.zsh/completions $fpath) 
+fpath=(~/.zsh/completions $fpath)
 autoload -U compinit && compinit
 
 fpath=(~/zsh_config/autoload $fpath)
@@ -164,3 +166,4 @@ export DISABLE_AUTO_TITLE=true
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 export PATH="/usr/local/opt/mysql-client/bin:$PATH"
+export PATH="/usr/local/opt/go@1.13/bin:$PATH"
