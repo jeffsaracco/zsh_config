@@ -51,7 +51,20 @@ COMPLETION_WAITING_DOTS="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git bundler osx rake ruby brew capistrano common-aliases encode64 npm tmux)
+plugins=(
+  git 
+  bundler 
+  osx 
+  rake 
+  ruby 
+  brew 
+  common-aliases 
+  encode64 
+  npm 
+  zsh-autosuggestions 
+  zsh-syntax-highlighting 
+  k
+)
 
 # User configuration
 
@@ -144,6 +157,7 @@ autoload -U compinit && compinit
 
 fpath=(~/zsh_config/autoload $fpath)
 autoload -Uz kp
+autoload -Uz quitcd
 
 export PGHOST=localhost
 
